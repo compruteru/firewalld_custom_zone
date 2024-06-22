@@ -1,0 +1,10 @@
+#Zones aren't just cordoned areas for where packets flow, they can also be configuration directives to where other attributes of a zone can be configured... like IP addresses, Ports, services... this 'zone' is not necessarily just an interface, but a specific area for attributes to be defined... for where they can be called so the attributes can be matched against the packets flowing through the firewall... here, in this space, is where you can allow a specific ip to access the ms-rdp service running on your computer. for some reason the word wrap happens some like 490 characters into the line.... and not visually where my screen pixels run out.... -_- fundamentally rethinking computers... because someone else hasn't thought of it all before.
+
+firewall-cmd --permanent --new-zone=YourCustomZoneNameGoesHrere
+firewall-cmd --reload
+firewall-cmd --zone=YourCustomZoneNameGoesHrere --add-source=192.168.137.239 --permanent
+firewall-cmd --zone=YourCustomZoneNameGoesHrere --add-service=ms-wbt --permanent
+firewall-cmd --reload
+firewall-cmd --get-active-zones
+firewall-cmd --list-all
+firewall-cmd --info-zone=YourCustomZoneNameGoesHrere
